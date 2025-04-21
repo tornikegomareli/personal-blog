@@ -1,4 +1,4 @@
-# Tornike's Corner
+# Pipecraft.me
 
 Personal website and blog showcasing software engineering content focused on Swift, systems programming, and mobile engineering.
 
