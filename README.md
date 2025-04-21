@@ -2,6 +2,12 @@
 
 Personal website and blog showcasing software engineering content focused on Swift, systems programming, and mobile engineering.
 
+## RSS Feed
+
+Subscribe to the blog using your favorite RSS reader:
+- RSS Feed: https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml
+- Atom Feed: https://tornike-gomareli-personal-website-yt6y.vercel.app/atom.xml
+
 ## Setup
 ```bash
 # Install dependencies
@@ -31,5 +37,4 @@ yarn start
 ```
 
 ## License
-
 MIT
