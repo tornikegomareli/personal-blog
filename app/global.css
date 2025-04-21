@@ -2,77 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply text-[20px] leading-[var(--line-height-normal)] font-normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-semibold leading-tight mb-4 text-[--title];
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  p {
+    @apply mb-6 leading-[var(--line-height-relaxed)] text-[20px];
+  }
+
+  article {
+    @apply text-[22px] leading-relaxed;
+  }
+
+  pre,
+  code {
+    @apply font-mono;
+  }
+}
+
 :root {
-    --text: #222;
-    --title: #222;
-    --bg: white;
-    --code-bg: #232936;
-    --link: #d23669;
-    --inlineCode-bg: rgba(255, 229, 100, 0.2);
-    --inlineCode-text: #1a1a1a;
-    --pink: lab(63 59.32 -1.47);
-    --purple: lab(33 42.09 -43.19);
+  --text: #2d3748;
+  --title: #1a202c;
+  --bg: white;
+  --code-bg: #232936;
+  --link: #d23669;
+  --inlineCode-bg: rgba(255, 229, 100, 0.2);
+  --inlineCode-text: #1a1a1a;
+  --pink: lab(63 59.32 -1.47);
+  --purple: lab(33 42.09 -43.19);
+
+  /* Typography */
+  --line-height-normal: 2;
+  --line-height-relaxed: 1.85;
+  --letter-spacing-normal: -0.01em;
 }
 
 html[data-theme="dark"] {
-    --text: rgba(255, 255, 255, 0.88);
+  --text: rgba(255, 255, 255, 0.92);
+  --title: white;
+  --bg: rgb(26, 32, 44);
+  --code-bg: #191d27;
+  --link: #ffa7c4;
+  --inlineCode-bg: rgba(115, 124, 153, 0.2);
+  --inlineCode-text: #e6e6e6;
+  --pink: lab(81 32.36 -7.02);
+  --purple: lab(78 19.97 -36.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --text: rgba(255, 255, 255, 0.92);
     --title: white;
-    --bg: rgb(40, 44, 53);
+    --bg: rgb(26, 32, 44);
     --code-bg: #191d27;
     --link: #ffa7c4;
     --inlineCode-bg: rgba(115, 124, 153, 0.2);
     --inlineCode-text: #e6e6e6;
     --pink: lab(81 32.36 -7.02);
     --purple: lab(78 19.97 -36.75);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --text: rgba(255, 255, 255, 0.88);
-        --title: white;
-        --bg: rgb(40, 44, 53);
-        --code-bg: #191d27;
-        --link: #ffa7c4;
-        --inlineCode-bg: rgba(115, 124, 153, 0.2);
-        --inlineCode-text: #e6e6e6;
-        --pink: lab(81 32.36 -7.02);
-        --purple: lab(78 19.97 -36.75);
-    }
+  }
 }
 @property --myColor1 {
-    syntax: "<color>";
-    initial-value: #222;
-    inherits: false;
+  syntax: "<color>";
+  initial-value: #222;
+  inherits: false;
 }
 @property --myColor2 {
-    syntax: "<color>";
-    initial-value: #222;
-    inherits: false;
+  syntax: "<color>";
+  initial-value: #222;
+  inherits: false;
 }
 
-html[data-theme="dark"] @property --myColor1, 
-@media (prefers-color-scheme: dark) :root:not([data-theme]) @property --myColor1 {
-    syntax: "<color>";
-    initial-value: rgba(255, 255, 255, 0.88);
-    inherits: false;
+html[data-theme="dark"] @property --myColor1,
+@media
+  (prefers-color-scheme: dark)
+  :root:not([data-theme])
+  @property
+  --myColor1 {
+  syntax: "<color>";
+  initial-value: rgba(255, 255, 255, 0.88);
+  inherits: false;
 }
 
-html[data-theme="dark"] @property --myColor2, 
-@media (prefers-color-scheme: dark) :root:not([data-theme]) @property --myColor2 {
-    syntax: "<color>";
-    initial-value: rgba(255, 255, 255, 0.88);
-    inherits: false;
+html[data-theme="dark"] @property --myColor2,
+@media
+  (prefers-color-scheme: dark)
+  :root:not([data-theme])
+  @property
+  --myColor2 {
+  syntax: "<color>";
+  initial-value: rgba(255, 255, 255, 0.88);
+  inherits: false;
 }
 
 html[data-theme="dark"] body,
 @media (prefers-color-scheme: dark) :root:not([data-theme]) body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-reduced-motion) {
-    * {
-        transition: none !important;
-        transform: none !important;
-    }
+  * {
+    transition: none !important;
+    transform: none !important;
+  }
 }

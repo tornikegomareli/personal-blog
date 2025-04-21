@@ -1,15 +1,16 @@
-import { Montserrat, Merriweather } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 
-export const sans = Montserrat({
+export const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700', '900'],
-  style: ['normal'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
 })
 
-export const serif = Merriweather({
+export const serif = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
+  variable: '--font-serif',
 })

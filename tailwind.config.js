@@ -5,6 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {},
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)']
+      },
     },
   },
   plugins: [],

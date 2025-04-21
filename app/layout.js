@@ -3,7 +3,7 @@ import HomeLink from "./HomeLink";
 import AutoRefresh from "./AutoRefresh";
 import ThemeToggle from "./ThemeToggle";
 import ThemeScript from "./ThemeScript";
-import { serif } from "./fonts";
+import { sans, serif } from "./fonts";
 import "./global.css";
 import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 
@@ -33,11 +33,11 @@ export default function RootLayout({ children }) {
 
   return (
     <AutoRefresh>
-      <html lang="en" className={serif.className}>
+      <html lang="en" className={`${sans.variable} ${serif.variable}`}>
         <head>
           <ThemeScript />
         </head>
-        <body className="mx-auto max-w-2xl bg-[--bg] px-5 py-12 text-[--text]">
+        <body className="mx-auto max-w-2xl bg-[--bg] px-5 py-12 text-[--text] font-sans">
           <header className="mb-14">
             <div className="flex flex-row place-content-between items-center">
               <HomeLink />
