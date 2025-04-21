@@ -5,6 +5,7 @@ import Color from "colorjs.io";
 import { sans } from "./fonts";
 import IntroSection from "./IntroSection";
 import RecentPostsScroll from "./RecentPostsScroll";
+import RecentPodcastsScroll from "./RecentPodcastsScroll";
 import RSSButton from "./components/RSSButton";
 
 export const metadata = {
@@ -58,6 +59,7 @@ export default async function Home() {
       <IntroSection />
       <RSSButton />
       <RecentPostsScroll posts={posts} />
+      <RecentPodcastsScroll />
     </>
   );
 }
