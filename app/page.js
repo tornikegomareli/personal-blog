@@ -8,12 +8,14 @@ import RecentPostsScroll from "./RecentPostsScroll";
 import RSSButton from "./components/RSSButton";
 
 export const metadata = {
-  title: "Tornike's Corner",
+  title: "Tornike Gomareli",
   description: "A personal blog by Tornike Gomareli",
   alternates: {
     types: {
-      "application/atom+xml": "https://tornike-gomareli-personal-website-yt6y.vercel.app/atom.xml",
-      "application/rss+xml": "https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml",
+      "application/atom+xml":
+        "https://tornike-gomareli-personal-website-yt6y.vercel.app/atom.xml",
+      "application/rss+xml":
+        "https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml",
     },
   },
 };

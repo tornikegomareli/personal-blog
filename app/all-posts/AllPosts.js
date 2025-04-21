@@ -4,7 +4,7 @@ import Link from "../Link";
 import { getPosts } from "../page";
 
 export const metadata = {
-  title: "All Posts - Tornike's Corner",
+  title: "All Posts - Tornike Gomareli",
   description: "Browse all blog posts by Tornike Gomareli",
 };
 

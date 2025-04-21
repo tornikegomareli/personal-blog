@@ -83,15 +83,14 @@ export default function IntroSection() {
             >
               GitHub
             </Link>
-            <p>
-              Also I am creating Technical podcast about engineering on Youtube{" "}
-              <Link
-                href="https://www.youtube.com/@Devtherapy"
-                className="text-[--link] hover:underline"
-              >
-                @Devtherapy
-              </Link>{" "}
-            </p>
+            {". "}
+            Also I am creating Technical podcast about engineering on Youtube{" "}
+            <Link
+              href="https://www.youtube.com/@Devtherapy"
+              className="text-[--link] hover:underline"
+            >
+              @Devtherapy
+            </Link>{" "}
           </p>
           <p className={`${sans.className} text-lg`}>
             Here are a few projects I've worked on, built, and deployed:
