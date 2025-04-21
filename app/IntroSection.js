@@ -50,7 +50,7 @@ export default function IntroSection() {
     <section className="mb-14">
       <div className="flex flex-row items-center gap-6 mb-6">
         <div className="flex-shrink-0">
-          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600">
+          <div className="w-52 h-52 md:w-52 md:h-52 rounded-full overflow-hidden dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600">
             <img
               src="https://avatars.githubusercontent.com/u/24585160?v=4"
               alt="Tornike Gomareli"
@@ -83,7 +83,15 @@ export default function IntroSection() {
             >
               GitHub
             </Link>
-            .
+            <p>
+              Also I am creating Technical podcast about engineering on Youtube{" "}
+              <Link
+                href="https://www.youtube.com/@Devtherapy"
+                className="text-[--link] hover:underline"
+              >
+                @Devtherapy
+              </Link>{" "}
+            </p>
           </p>
           <p className={`${sans.className} text-lg`}>
             Here are a few projects I've worked on, built, and deployed:

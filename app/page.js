@@ -5,6 +5,7 @@ import Color from "colorjs.io";
 import { sans } from "./fonts";
 import IntroSection from "./IntroSection";
 import RecentPostsScroll from "./RecentPostsScroll";
+import RSSButton from "./components/RSSButton";
 
 export const metadata = {
   title: "Tornike's Corner",
@@ -53,6 +54,7 @@ export default async function Home() {
   return (
     <>
       <IntroSection />
+      <RSSButton />
       <RecentPostsScroll posts={posts} />
     </>
   );
