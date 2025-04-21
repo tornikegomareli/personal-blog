@@ -307,7 +307,7 @@ struct Deque<Element> {
   public init(elements: [Element]) {
     let requiredCapacity = elements.count
     self.init(capacity: requiredCapacity)
-  
+
     for element in elements {
       self.append(element)
     }
@@ -334,7 +334,9 @@ extension Deque: MutableCollection, BidirectionalCollection {
     return (i - 1 + storage.capacity) % storage.capacity
   }
 }
-``````
+```
+
+```swift
 extension Deque: Collection {
   public typealias Index = Int
   public var startIndex: Index {
@@ -348,7 +350,9 @@ extension Deque: Collection {
     return (i + 1) % storage.capacity
   }
 }
-``````
+```
+
+```swift
 extension Deque {
   public mutating func prepend(_ element: Element) {
     storage.prepend(element)
