@@ -6,6 +6,7 @@ import ThemeScript from "./ThemeScript";
 import { sans, serif } from "./fonts";
 import "./global.css";
 import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }) {
   const socialLinks = [
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
             </div>
           </header>
           <main>{children}</main>
+          <Analytics />
         </body>
       </html>
     </AutoRefresh>
