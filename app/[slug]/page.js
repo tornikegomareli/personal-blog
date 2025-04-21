@@ -25,10 +25,10 @@ export default async function PostPage({ params }) {
     }
   }
   const { content, data } = matter(file);
-  const discussUrl = `https://bsky.app/search?q=${encodeURIComponent(
-    `https://overreacted.io/${params.slug}/`,
+  const discussLinkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+    `https://tornike-gomareli-personal-website-yt6y.vercel.app/${params.slug}/`
   )}`;
-  const editUrl = `https://github.com/gaearon/overreacted.io/edit/main/public/${encodeURIComponent(
+  const editUrl = `https://github.com/tornikegomareli/TornikeGomareli-personal-website/edit/main/public/${encodeURIComponent(
     params.slug,
   )}/index.md`;
   return (
@@ -75,7 +75,7 @@ export default async function PostPage({ params }) {
         />
         <hr />
         <p>
-          <Link href={discussUrl}>Discuss on Bluesky</Link>
+          <Link href={discussLinkedinUrl}>Discuss on LinkedIn</Link>
           &nbsp;&nbsp;&middot;&nbsp;&nbsp;
           <Link href={editUrl}>Edit on GitHub</Link>
         </p>

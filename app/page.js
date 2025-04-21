@@ -11,8 +11,8 @@ export const metadata = {
   description: "A personal blog by Tornike Gomareli",
   alternates: {
     types: {
-      "application/atom+xml": "https://overreacted.io/atom.xml",
-      "application/rss+xml": "https://overreacted.io/rss.xml",
+      "application/atom+xml": "https://tornike-gomareli-personal-website-yt6y.vercel.app/atom.xml",
+      "application/rss+xml": "https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml",
     },
   },
 };
