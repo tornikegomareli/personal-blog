@@ -1,102 +1,144 @@
+/* General Markdown Styling */
 .markdown {
-    line-height: 28px;
-    --path: none;
-    --radius-top: 12px;
-    --radius-bottom: 12px;
-    --padding-top: 1rem;
-    --padding-bottom: 1rem;
+  line-height: 28px;
+  --path: none;
+  --radius-top: 12px;
+  --radius-bottom: 12px;
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
 }
 
 .markdown p {
-    @apply pb-8;
+  @apply pb-8;
 }
 
 .markdown a {
-    @apply border-b-[1px] border-[--link] text-[--link];
+  @apply border-b-[1px] border-[--link] text-[--link];
 }
 
 .markdown hr {
-    @apply pt-8 opacity-60 dark:opacity-10;
+  @apply pt-8 opacity-60 dark:opacity-10;
 }
 
 .markdown h2 {
-    @apply mt-2 pb-8 text-3xl font-bold;
+  @apply mt-2 pb-8 text-3xl font-bold;
 }
 
 .markdown h3 {
-    @apply mt-2 pb-8 text-2xl font-bold;
+  @apply mt-2 pb-8 text-2xl font-bold;
 }
 
 .markdown h4 {
-    @apply mt-2 pb-8 text-xl font-bold;
+  @apply mt-2 pb-8 text-xl font-bold;
 }
 
+/* Inline Code */
 .markdown :not(pre) > code {
-    border-radius: 10px;
-    background: var(--inlineCode-bg);
-    color: var(--inlineCode-text);
-    padding: 0.15em 0.2em 0.05em;
-    white-space: normal;
+  border-radius: 10px;
+  background: var(--inlineCode-bg);
+  color: var(--inlineCode-text);
+  padding: 0.15em 0.2em 0.05em;
+  white-space: normal;
 }
 
+/* Code Blocks */
 .markdown pre {
-    @apply -mx-4 mb-8 overflow-y-auto p-4 text-sm;
-    clip-path: var(--path);
-    border-top-right-radius: var(--radius-top);
-    border-top-left-radius: var(--radius-top);
-    border-bottom-right-radius: var(--radius-bottom);
-    border-bottom-left-radius: var(--radius-bottom);
-    padding-top: var(--padding-top);
-    padding-bottom: var(--padding-bottom);
+  @apply -mx-4 mb-8 overflow-x-auto p-4 text-sm; /* Note: -mx-4 pulls it wider than container padding */
+  clip-path: var(--path);
+  border-top-right-radius: var(--radius-top);
+  border-top-left-radius: var(--radius-top);
+  border-bottom-right-radius: var(--radius-bottom);
+  border-bottom-left-radius: var(--radius-bottom);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
 }
 
 .markdown pre code {
-    width: auto;
-}
-
-.markdown blockquote {
-    @apply relative -left-2 -ml-4 mb-8 pl-4;
-    font-style: italic;
-    border-left: 3px solid hsla(0, 0%, 0%, 0.9);
-    border-left-color: inherit;
-    opacity: 0.8;
-}
-
-.markdown blockquote p {
-    margin: 0;
-    padding: 0;
-}
-
-.markdown p img {
-    margin-bottom: 0;
-}
-
-.markdown ul {
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    margin-bottom: 1.75rem;
-    list-style-position: outside;
-    list-style-image: none;
-    list-style: disc;
-}
-
-.markdown li {
-    margin-bottom: calc(1.75rem / 2);
-}
-
-.markdown img {
-    @apply mb-8;
-    max-width: 100%;
+  width: auto; /* Let code inside pre take needed width */
 }
 
 .markdown pre [data-highlighted-line] {
-    margin-left: -16px;
-    padding-left: 12px;
-    border-left: 4px solid #ffa7c4;
-    background-color: #022a4b;
-    display: block;
-    padding-right: 1em;
+  margin-left: -16px; /* Adjust based on pre padding */
+  padding-left: 12px;
+  border-left: 4px solid var(--link); /* Use theme color */
+  background-color: color-mix(
+    in srgb,
+    var(--code-bg) 80%,
+    black
+  ); /* Slightly darker bg */
+  display: block;
+  padding-right: 1em;
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  @apply relative -left-2 -ml-4 mb-8 pl-4;
+  font-style: italic;
+  border-left: 3px solid hsla(0, 0%, 0%, 0.9);
+  border-left-color: inherit;
+  opacity: 0.8;
+}
+
+.markdown blockquote p {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0; /* Override general p padding */
+}
+
+/* Lists */
+.markdown ul {
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 1.5rem; /* Indent lists */
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 1.75rem;
+  list-style-position: outside;
+  list-style-image: none;
+  list-style: disc;
+}
+
+.markdown li {
+  margin-bottom: calc(1.75rem / 2);
+}
+
+/* General Images */
+.markdown img {
+  @apply mb-8;
+  max-width: 100%; /* Default images stay within container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 0.25rem; /* Slight rounding for regular images */
+}
+
+.markdown p img {
+  margin-bottom: 0; /* Reset margin if image is only thing in paragraph */
+}
+
+/* --- START: Cover Image Full Bleed Style (with small margins) --- */
+/* Make the first image in a blog post function as an almost full-bleed cover image */
+.markdown > :first-child img,
+.markdown > h1 + p > img,
+.markdown > h1 + p + p > img,
+.markdown > p:first-of-type > img {
+  --cover-margin: 6vw; /* Define the desired margin (1vw = 1% of viewport width) - Adjust as needed */
+
+  width: calc(
+    100vw - (2 * var(--cover-margin))
+  ); /* Subtract margin from both sides */
+  max-width: calc(100vw - (2 * var(--cover-margin))); /* Match the width */
+
+  /* Calculate negative margin to align left edge, then add back one margin */
+  margin-left: calc(50% - 50vw + var(--cover-margin));
+
+  position: static; /* Keep position static */
+
+  /* Keep or adjust your other styles */
+  height: 65vh; /* Example height */
+  object-fit: cover;
+  border-radius: 8px; /* Maybe add a small radius back now? Optional. */
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  /* Remove margin-right, let browser calculate it based on width/left margin */
+  margin-right: auto;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
 }

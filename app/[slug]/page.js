@@ -48,7 +48,7 @@ export default async function PostPage({ params }) {
           year: "numeric",
         })}
       </p>
-      <div className="markdown mt-10">
+      <div className="markdown mt-10 relative">
         <MDXRemote
           source={content}
           components={{
