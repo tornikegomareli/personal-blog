@@ -48,9 +48,9 @@ export default function IntroSection() {
 
   return (
     <section className="mb-14">
-      <div className="flex flex-row items-center gap-6 mb-6">
-        <div className="flex-shrink-0">
-          <div className="w-52 h-52 md:w-52 md:h-52 rounded-full overflow-hidden dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600">
+      <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+        <div className="flex-shrink-0 mb-6 md:mb-0">
+          <div className="w-52 h-52 md:w-52 md:h-52 rounded-full overflow-hidden dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 mx-auto md:mx-0">
             <img
               src="https://avatars.githubusercontent.com/u/24585160?v=4"
               alt="Tornike Gomareli"
@@ -64,7 +64,7 @@ export default function IntroSection() {
           </div>
         </div>
 
-        <div className="flex-grow">
+        <div className="flex-grow text-center md:text-left">
           <p className={`${sans.className} text-lg mb-2`}>
             Hi, I'm a software engineer living in Tbilisi, Georgia. Specialized
             in Swift, systems programming and mobile engineering. I write about
