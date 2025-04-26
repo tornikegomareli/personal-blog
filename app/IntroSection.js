@@ -25,6 +25,11 @@ export default function IntroSection() {
       link: "https://apps.apple.com/us/app/superapp-tnet/id6444474250",
     },
     {
+      name: "AnyDesk",
+      logo: "https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/37/84/44/378444c4-2d01-ae96-bbc3-7b06680f4313/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/460x0w.webp",
+      link: "https://apps.apple.com/uz/app/tbc-uz-online-mobile-banking/id1450503714",
+    },
+    {
       name: "Shopthing",
       logo: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/77/63/e0/7763e037-84c1-51fe-914c-ee4107611e4e/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp",
       link: "https://apps.apple.com/us/app/shopthing-shop-luxury-deals/id1522774665",
@@ -66,10 +71,10 @@ export default function IntroSection() {
 
         <div className="flex-grow text-center md:text-left">
           <p className={`${sans.className} text-lg mb-2`}>
-            Hi, I'm a software engineer living in Tbilisi, Georgia. Specialized
-            in Swift, systems programming and mobile engineering. I write about
-            programming, engineering challenges, and just my journey in tech.
-            You can follow me on{" "}
+            Hi, I'm a software engineer based in Europe. Specialized in Swift,
+            systems programming and mobile engineering. I am also writing in
+            Rust for my side projects. I write about programming, engineering
+            challenges, and just my journey in tech. You can follow me on{" "}
             <Link
               href="https://twitter.com/tornikegomareli"
               className="text-[--link] hover:underline"
