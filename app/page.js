@@ -9,6 +9,7 @@ import RecentPodcastsScroll from "./RecentPodcastsScroll";
 import RSSButton from "./components/RSSButton";
 
 export const metadata = {
+  metadataBase: new URL('https://pipecraft.me'),
   title: "Tornike Gomareli",
   description: "A personal blog by Tornike Gomareli",
   alternates: {
@@ -19,6 +20,29 @@ export const metadata = {
         "https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml",
     },
   },
+  openGraph: {
+    title: "Tornike Gomareli",
+    description: "A personal blog by Tornike Gomareli",
+    url: "https://pipecraft.me",
+    siteName: "Tornike Gomareli",
+    images: [
+      {
+        url: '/sticker-bomb-3.png',
+        width: 1200,
+        height: 630,
+        alt: 'Tornike Gomareli',
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tornike Gomareli',
+    description: 'A personal blog by Tornike Gomareli',
+    images: ['/sticker-bomb-3.png'],
+    creator: '@tornikegomareli',
+  }
 };
 
 export async function getPosts() {
