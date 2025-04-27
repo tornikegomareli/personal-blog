@@ -49,30 +49,66 @@ export async function getPosts() {
   const entries = await readdir("./public/", { withFileTypes: true });
   const dirs = entries
     .filter((entry) => entry.isDirectory())
+    .filter((entry) => entry.name !== 'preview') // Skip the preview directory
     .map((entry) => entry.name);
+    
   const fileContents = await Promise.all(
-    dirs.map((dir) => readFile("./public/" + dir + "/index.md", "utf8")),
+    dirs.map((dir) => {
+      try {
+        return readFile("./public/" + dir + "/index.md", "utf8");
+      } catch (error) {
+        console.error(`Error reading file for ${dir}:`, error);
+        return null;
+      }
+    }),
   );
-  const posts = dirs.map((slug, i) => {
-    const fileContent = fileContents[i];
-    const { data } = matter(fileContent);
+  
+  // Filter out nulls from failed reads
+  const validPosts = dirs.filter((_, i) => fileContents[i] !== null);
+  const validContents = fileContents.filter(content => content !== null);
+  
+  const posts = validPosts.map((slug, i) => {
+    const fileContent = validContents[i];
+    try {
+      const { data } = matter(fileContent);
 
-    let image = null;
-    const imageRegex = /!\[[^\]]*\]\(([^)]+)\)/;
-    const match = fileContent.match(imageRegex);
-    if (match && match[1]) {
-      image = match[1];
+      let image = null;
+      const imageRegex = /!\[[^\]]*\]\(([^)]+)\)/;
+      const match = fileContent.match(imageRegex);
+      if (match && match[1]) {
+        image = match[1];
+      }
+
+      // Validate the date
+      const isValidDate = data.date && !isNaN(new Date(data.date).getTime());
+
+      return {
+        slug,
+        ...data,
+        date: isValidDate ? data.date : null,
+        image,
+      };
+    } catch (error) {
+      console.error(`Error parsing frontmatter for ${slug}:`, error);
+      return {
+        slug,
+        title: slug,
+        date: null,
+        spoiler: "No description available",
+        image: null,
+      };
     }
-
-    return {
-      slug,
-      ...data,
-      image,
-    };
   });
+  
+  // Sort posts, handling null dates
   posts.sort((a, b) => {
+    // If either date is invalid, move it to the end
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    
     return Date.parse(a.date) < Date.parse(b.date) ? 1 : -1;
   });
+  
   return posts;
 }
 
