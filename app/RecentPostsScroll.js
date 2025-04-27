@@ -63,11 +63,14 @@ function PostCard({ post }) {
 
           {/* Date badge */}
           <div className="absolute top-4 right-4 bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-xs font-medium shadow-md">
-            {new Date(post.date).toLocaleDateString("en", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })}
+            {post.date && !isNaN(new Date(post.date).getTime()) 
+              ? new Date(post.date).toLocaleDateString("en", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              : "Invalid Date"
+            }
           </div>
         </div>
 
