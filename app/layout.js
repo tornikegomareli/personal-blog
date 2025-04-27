@@ -7,8 +7,13 @@ import { sans, serif } from "./fonts";
 import "./global.css";
 import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
+import { cookies } from 'next/headers';
 
 export default function RootLayout({ children }) {
+  // Check if in preview mode
+  const cookieStore = cookies();
+  const isPreview = cookieStore.has('__prerender_bypass');
+
   const socialLinks = [
     {
       icon: Github,
@@ -39,6 +44,11 @@ export default function RootLayout({ children }) {
           <ThemeScript />
         </head>
         <body className="mx-auto max-w-2xl bg-[--bg] px-5 py-12 text-[--text] font-sans">
+          {isPreview && (
+            <div className="fixed top-0 left-0 right-0 bg-blue-600 text-white py-2 px-4 text-center z-50">
+              Preview Mode Active - <a href="/api/exit-preview" className="underline hover:text-blue-200">Exit Preview</a>
+            </div>
+          )}
           <header className="mb-14">
             <div className="flex flex-row place-content-between items-center">
               <HomeLink />
