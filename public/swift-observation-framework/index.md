@@ -66,7 +66,7 @@ class ProfileViewModel: ObservableObject {
 }
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
-    
+
     var body: some View {
         VStack {
             Text("Name: \(viewModel.name)")
@@ -112,7 +112,7 @@ var homeTask = HomeTask(title: "Complete SwiftUI project", isCompleted: false)
 struct ContentView: View {
   var body: some View {
     let _ = Self._printChanges()
-    
+
     VStack {
       HStack {
         Image(systemName: homeTask.isCompleted ? "checkmark.circle.fill" : "circle")
@@ -121,7 +121,7 @@ struct ContentView: View {
           .foregroundColor(homeTask.isCompleted ? .gray : .black)
       }
       .padding()
-      
+
       Button("Mark as Completed") {
         homeTask.isCompleted = true
       }
@@ -157,7 +157,7 @@ Lets add priority for our tasks, and add possibility to mutate it from the `View
 struct ContentView: View {
   var body: some View {
     let _ = Self._printChanges()
-    
+
     VStack {
       HStack {
         Image(systemName: homeTask.isCompleted ? "checkmark.circle.fill" : "circle")
@@ -166,12 +166,12 @@ struct ContentView: View {
           .foregroundColor(homeTask.isCompleted ? .green : .white)
       }
       .padding()
-      
+
       Button("Mark as Completed") {
         homeTask.isCompleted = true
       }
       .padding()
-      
+
       Button("Increase Priority") {
         homeTask.priority = homeTask.priority + 1
       }
@@ -210,7 +210,7 @@ final class HomeTask {
     self.title = title
     self.isCompleted = isCompleted
   }
-  
+
   @ObservationIgnored private let _$observationRegistrar = Observation.ObservationRegistrar()
   internal nonisolated func access<Member>(
       keyPath: KeyPath<HomeTask , Member>
@@ -309,9 +309,9 @@ final class HomeTask {
     self.title = title
     self.isCompleted = isCompleted
   }
-  
+
   @ObservationIgnored private let _$observationRegistrar = Observation.ObservationRegistrar()
-  
+
   @ObservationIgnored private var _title: String
   @ObservationIgnored private var _isCompleted: Bool
   @ObservationIgnored private var _priority: Int
@@ -587,9 +587,9 @@ struct HomeTask {
     self.title = title
     self.isCompleted = isCompleted
   }
-  
+
   @ObservationIgnored private let _$observationRegistrar = Observation.ObservationRegistrar()
-  
+
   @ObservationIgnored private var _title: String
   @ObservationIgnored private var _isCompleted: Bool
   @ObservationIgnored private var _priority: Int
