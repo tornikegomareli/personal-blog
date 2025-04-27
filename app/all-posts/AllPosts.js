@@ -21,11 +21,14 @@ function PostItem({ post }) {
           {post.title}
         </h2>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-          {new Date(post.date).toLocaleDateString("en", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
+          {post.date && !isNaN(new Date(post.date).getTime())
+            ? new Date(post.date).toLocaleDateString("en", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            : "No date available"
+          }
         </p>
         <p>{post.spoiler}</p>
       </article>
