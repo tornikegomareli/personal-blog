@@ -5,8 +5,8 @@ Personal website and blog showcasing software engineering content focused on Swi
 ## RSS Feed
 
 Subscribe to the blog using your favorite RSS reader:
-- RSS Feed: https://tornike-gomareli-personal-website-yt6y.vercel.app/rss.xml
-- Atom Feed: https://tornike-gomareli-personal-website-yt6y.vercel.app/atom.xml
+- RSS Feed: https://pipecraft.me/rss.xml
+- Atom Feed: https://pipecraft.me/atom.xml
 
 ## Setup
 ```bash
