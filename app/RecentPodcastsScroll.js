@@ -66,6 +66,16 @@ export default function RecentPodcastsScroll() {
   const podcasts = [
     {
       title:
+        "Devtherapy #18 – Levan Mamulashvili (Mainera) | Technical Leadership, Career Strategy, MIT, Forbes",
+      url: "https://youtu.be/aECGCXO1Nus",
+    },
+    {
+      title:
+        "Devtherapy #17 – Irakli Kokrashvili | Virtual Reality, XR, Oculus, Gaming, Police 1-2-3, Unity",
+      url: "https://youtu.be/NFmq3_ujDfU",
+    },
+    {
+      title:
         "Devtherapy #16 – D3, Data visualization, JS, Workstations, Upwork",
       url: "https://www.youtube.com/watch?v=Iw6R3NiEHXA",
     },

@@ -1,11 +1,11 @@
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
-import Link from "./Link";
-import Color from "colorjs.io";
-import { sans } from "./fonts";
-import IntroSection from "./IntroSection";
-import RecentPostsScroll from "./RecentPostsScroll";
-import RecentPodcastsScroll from "./RecentPodcastsScroll";
+import Navigation from "./components/Navigation";
+import HeroSection from "./components/HeroSection";
+import ProjectsSection from "./components/ProjectsSection";
+import OpenSourceSection from "./components/OpenSourceSection";
+import PodcastSection from "./components/PodcastSection";
+import ArticlesSection from "./components/ArticlesSection";
 import RSSButton from "./components/RSSButton";
 
 export const metadata = {
@@ -79,11 +79,16 @@ export async function getPosts() {
 export default async function Home() {
   const posts = await getPosts();
   return (
-    <>
-      <IntroSection />
-      <RSSButton />
-      <RecentPostsScroll posts={posts} />
-      <RecentPodcastsScroll />
-    </>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Navigation />
+        <HeroSection />
+        <RSSButton />
+        <ProjectsSection />
+        <OpenSourceSection />
+        <PodcastSection />
+        <ArticlesSection posts={posts} />
+      </div>
+    </div>
   );
 }

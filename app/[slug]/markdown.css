@@ -1,6 +1,9 @@
 /* General Markdown Styling */
 .markdown {
-  line-height: 28px;
+  @apply text-gray-700 dark:text-gray-300;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.75;
   --path: none;
   --radius-top: 12px;
   --radius-bottom: 12px;
@@ -9,41 +12,56 @@
 }
 
 .markdown p {
-  @apply pb-8;
+  @apply mb-6;
 }
 
 .markdown a {
-  @apply border-b-[1px] border-[--link] text-[--link];
+  @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline underline-offset-2 transition-colors;
 }
 
 .markdown hr {
-  @apply pt-8 opacity-60 dark:opacity-10;
+  @apply my-12 border-gray-200 dark:border-gray-700;
 }
 
 .markdown h2 {
-  @apply mt-2 pb-8 text-3xl font-bold;
+  @apply mt-12 mb-6 text-2xl font-bold text-gray-900 dark:text-white;
 }
 
 .markdown h3 {
-  @apply mt-2 pb-8 text-2xl font-bold;
+  @apply mt-10 mb-4 text-xl font-bold text-gray-900 dark:text-white;
 }
 
 .markdown h4 {
-  @apply mt-2 pb-8 text-xl font-bold;
+  @apply mt-8 mb-4 text-lg font-bold text-gray-900 dark:text-white;
+}
+
+/* Lists */
+.markdown ul {
+  @apply mb-6 pl-6 list-disc;
+}
+
+.markdown ol {
+  @apply mb-6 pl-6 list-decimal;
+}
+
+.markdown li {
+  @apply mb-2;
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  @apply pl-6 border-l-4 border-gray-300 dark:border-gray-600 italic my-6 text-gray-600 dark:text-gray-400;
 }
 
 /* Inline Code */
 .markdown :not(pre) > code {
-  border-radius: 10px;
-  background: var(--inlineCode-bg);
-  color: var(--inlineCode-text);
-  padding: 0.15em 0.2em 0.05em;
-  white-space: normal;
+  @apply px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono;
 }
 
 /* Code Blocks */
 .markdown pre {
-  @apply -mx-4 mb-8 overflow-x-auto p-4 text-sm; /* Note: -mx-4 pulls it wider than container padding */
+  @apply mb-6 rounded-lg overflow-x-auto text-sm;
+  background: var(--code-bg);
   clip-path: var(--path);
   border-top-right-radius: var(--radius-top);
   border-top-left-radius: var(--radius-top);
@@ -54,91 +72,65 @@
 }
 
 .markdown pre code {
-  width: auto; /* Let code inside pre take needed width */
+  @apply block px-6 py-4 overflow-x-auto;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
-.markdown pre [data-highlighted-line] {
-  margin-left: -16px; /* Adjust based on pre padding */
-  padding-left: 12px;
-  border-left: 4px solid var(--link); /* Use theme color */
-  background-color: color-mix(
-    in srgb,
-    var(--code-bg) 80%,
-    black
-  ); /* Slightly darker bg */
-  display: block;
-  padding-right: 1em;
+/* Tables */
+.markdown table {
+  @apply w-full mb-6 overflow-hidden rounded-lg;
 }
 
-/* Blockquotes */
-.markdown blockquote {
-  @apply relative -left-2 -ml-4 mb-8 pl-4;
-  font-style: italic;
-  border-left: 3px solid hsla(0, 0%, 0%, 0.9);
-  border-left-color: inherit;
-  opacity: 0.8;
+.markdown thead {
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
-.markdown blockquote p {
-  margin: 0;
-  padding: 0;
-  padding-bottom: 0; /* Override general p padding */
+.markdown th {
+  @apply px-4 py-2 text-left font-semibold text-gray-900 dark:text-white;
 }
 
-/* Lists */
-.markdown ul {
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 1.5rem; /* Indent lists */
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.75rem;
-  list-style-position: outside;
-  list-style-image: none;
-  list-style: disc;
+.markdown td {
+  @apply px-4 py-2 border-t border-gray-200 dark:border-gray-700;
 }
 
-.markdown li {
-  margin-bottom: calc(1.75rem / 2);
+.markdown tbody tr:hover {
+  @apply bg-gray-50 dark:bg-gray-800/50;
 }
 
-/* General Images */
+/* Images */
 .markdown img {
-  @apply mb-8;
-  max-width: 100%; /* Default images stay within container */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 0.25rem; /* Slight rounding for regular images */
+  @apply rounded-lg my-8 mx-auto;
+  max-width: 100%;
+  height: auto;
 }
 
-.markdown p img {
-  margin-bottom: 0; /* Reset margin if image is only thing in paragraph */
+/* Strong emphasis */
+.markdown strong {
+  @apply font-semibold text-gray-900 dark:text-white;
 }
 
-/* --- START: Cover Image Full Bleed Style (with small margins) --- */
-/* Make the first image in a blog post function as an almost full-bleed cover image */
-.markdown > :first-child img,
-.markdown > h1 + p > img,
-.markdown > h1 + p + p > img,
-.markdown > p:first-of-type > img {
-  --cover-margin: 6vw; /* Define the desired margin (1vw = 1% of viewport width) - Adjust as needed */
+/* Line numbers for code blocks */
+[data-line-numbers] {
+  counter-reset: line;
+}
 
-  width: calc(
-    100vw - (2 * var(--cover-margin))
-  ); /* Subtract margin from both sides */
-  max-width: calc(100vw - (2 * var(--cover-margin))); /* Match the width */
+[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply inline-block w-4 mr-4 text-right text-gray-500;
+}
 
-  /* Calculate negative margin to align left edge, then add back one margin */
-  margin-left: calc(50% - 50vw + var(--cover-margin));
+/* Highlighted lines in code blocks */
+[data-highlighted-line] {
+  @apply bg-gray-100/10 dark:bg-gray-700/30 -mx-6 px-6;
+}
 
-  position: static; /* Keep position static */
+/* Diff styles */
+.diff-add {
+  @apply bg-green-100/20 dark:bg-green-900/30;
+}
 
-  /* Keep or adjust your other styles */
-  height: 65vh; /* Example height */
-  object-fit: cover;
-  border-radius: 8px; /* Maybe add a small radius back now? Optional. */
-  margin-top: 1.5rem;
-  margin-bottom: 3rem;
-  /* Remove margin-right, let browser calculate it based on width/left margin */
-  margin-right: auto;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+.diff-remove {
+  @apply bg-red-100/20 dark:bg-red-900/30;
 }
