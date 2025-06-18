@@ -97,41 +97,39 @@ export default function IntroSection() {
               @Devtherapy
             </Link>{" "}
           </p>
-          <p className={`${sans.className} text-lg`}>
-            Here are a few projects I've worked on, built, and deployed:
-          </p>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-1 mt-2">
-        {myApps.map((app, index) => (
-          <Link
-            key={index}
-            href={app.link}
-            className="flex flex-col items-center"
-            target="_blank"
-          >
-            <div
-              className="w-24 h-24 overflow-hidden flex items-center justify-center rounded-xl transition-all hover:scale-110 -translate-y-0.5"
-              style={{
-                boxShadow:
-                  "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
-              }}
+      <div className="mt-6">
+        <p className={`${sans.className} text-lg text-center mb-4`}>
+          Here are a few projects I've worked on, built, and deployed:
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          {myApps.map((app, index) => (
+            <Link
+              key={index}
+              href={app.link}
+              className="group"
+              target="_blank"
             >
-              {app.logo ? (
-                <img
-                  src={app.logo}
-                  alt={`${app.name} logo`}
-                  className="w-full h-full object-contain p-2 rounded-xl"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.style.display = "none";
-                  }}
-                />
-              ) : null}
-            </div>
-          </Link>
-        ))}
+              <div
+                className="w-20 h-20 overflow-hidden flex items-center justify-center rounded-2xl transition-all duration-200 hover:scale-105 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md"
+              >
+                {app.logo ? (
+                  <img
+                    src={app.logo}
+                    alt={`${app.name} logo`}
+                    className="w-full h-full object-cover rounded-2xl"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.style.display = "none";
+                    }}
+                  />
+                ) : null}
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
