@@ -4,9 +4,9 @@ import { PlayCircle } from "lucide-react";
 
 export default function PodcastSection() {
   const latestPodcast = {
-    title: "Tech Talk with Tornike Gomareli",
-    description: "Join me as I discuss the latest trends in software development and share insights on building scalable applications.",
-    episode: "Devtherapy #18 – Technical Leadership",
+    title: "Devtherapy Podcast",
+    description: "Technical podcast about engineering where I discuss software development, systems programming, and share insights with guest engineers from around the world.",
+    episode: "Episode #18 – Levan Mamulashvili | Technical Leadership, Career Strategy, MIT, Forbes",
     url: "https://youtu.be/aECGCXO1Nus",
     thumbnail: "https://img.youtube.com/vi/aECGCXO1Nus/maxresdefault.jpg"
   };
@@ -45,8 +45,8 @@ export default function PodcastSection() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative">
                 <img
-                  src="/api/placeholder/400/300"
-                  alt="Podcast Cover"
+                  src={latestPodcast.thumbnail}
+                  alt="Devtherapy Podcast"
                   className="w-64 h-48 object-cover rounded-lg shadow-xl"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">

@@ -19,44 +19,26 @@ export default function ArticlesSection({ posts }) {
             href={`/${post.slug}/`}
             className="group block"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="md:flex">
-                <div className="md:flex-1 p-8">
-                  <h3 className={`${mono.className} text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors`}>
-                    {post.title}
-                  </h3>
-                  <p className={`${mono.className} text-gray-700 dark:text-gray-300 mb-4 line-clamp-2`}>
-                    {post.spoiler}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <time className={`${mono.className} text-sm text-gray-600 dark:text-gray-400`} dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString("en", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </time>
-                    
-                    <span className={`${mono.className} text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline`}>
-                      Read Article →
-                    </span>
-                  </div>
-                </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden p-8">
+              <h3 className={`${mono.className} text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors`}>
+                {post.title}
+              </h3>
+              <p className={`${mono.className} text-gray-700 dark:text-gray-300 mb-4 line-clamp-2`}>
+                {post.spoiler}
+              </p>
+              
+              <div className="flex items-center justify-between">
+                <time className={`${mono.className} text-sm text-gray-600 dark:text-gray-400`} dateTime={post.date}>
+                  {new Date(post.date).toLocaleDateString("en", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
                 
-                {post.image && (
-                  <div className="md:w-80 h-48 md:h-auto relative overflow-hidden bg-gray-100 dark:bg-gray-700">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "/api/placeholder/320/240";
-                      }}
-                    />
-                  </div>
-                )}
+                <span className={`${mono.className} text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:underline`}>
+                  Read Article →
+                </span>
               </div>
             </div>
           </Link>
