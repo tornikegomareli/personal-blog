@@ -3,9 +3,10 @@ import matter from "gray-matter";
 import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectsSection";
-import GitHubSection from "./components/GitHubSection";
+import OpenSourceSection from "./components/OpenSourceSection";
 import PodcastSection from "./components/PodcastSection";
 import ArticlesSection from "./components/ArticlesSection";
+import RSSButton from "./components/RSSButton";
 
 export const metadata = {
   metadataBase: new URL('https://pipecraft.me'),
@@ -82,8 +83,9 @@ export default async function Home() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Navigation />
         <HeroSection />
+        <RSSButton />
         <ProjectsSection />
-        <GitHubSection />
+        <OpenSourceSection />
         <PodcastSection />
         <ArticlesSection posts={posts} />
       </div>
